@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --border: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --font-body: ui-sans-serif, system-ui, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    margin: 0;
+    background: #FFFFFF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  ::selection { background: #D4AF37; color: #1A2436; }
+}
+
+@layer components {
+  .eyebrow { @apply text-xs uppercase tracking-[0.22em] text-[#8e741e]; }
+  .focus-gold { @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D4AF37]; }
+  .rule-section { background-image: linear-gradient(to right, transparent calc(50% - .5px), rgba(212,175,55,.18) 50%, transparent calc(50% + .5px)); }
+  .field { @apply w-full border-0 border-b border-[#1A2436]/30 bg-transparent px-0 py-3 text-lg text-[#1A2436] outline-none transition placeholder:text-[#1A2436]/40 focus:border-[#D4AF37]; }
+  .field option { color: #1A2436; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
