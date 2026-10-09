@@ -10,7 +10,8 @@ export default function PageHero({ eyebrow, title, lead, intro, action, image, i
   const reduceMotion = useReducedMotion();
 
   return <section className={`relative overflow-hidden border-b border-[#D4AF37]/40 pt-40 pb-14 lg:pt-48 lg:pb-16 ${tone === "cream" ? "bg-[#FAF8F2]" : "bg-white"}`}>
-    <div aria-hidden="true" className="absolute left-1/2 top-0 hidden h-full w-px bg-[#D4AF37]/25 lg:block" />
+    {/* The center rule marks the text/image split; without an image it would cut through long titles */}
+    {image && <div aria-hidden="true" className="absolute left-1/2 top-0 hidden h-full w-px bg-[#D4AF37]/25 lg:block" />}
     {image && (
       <div className="absolute bottom-0 right-0 top-[105px] hidden w-[calc(50%-20px)] lg:block">
         <Image src={image} alt={imageAlt} loading="eager" className="h-full w-full" style={{ objectPosition: imagePosition }} />
@@ -25,7 +26,7 @@ export default function PageHero({ eyebrow, title, lead, intro, action, image, i
     <motion.div initial={reduceMotion ? false : { opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className="relative mx-auto max-w-[1500px] px-5 lg:px-10">
       <div className={image ? "lg:max-w-[calc(50%-60px)]" : ""}>
         <p className="eyebrow">{eyebrow}</p>
-        <h1 className={`mt-5 max-w-6xl font-serif text-5xl font-bold leading-[.96] tracking-[-.035em] text-[#1A2436] ${titleSize === "compact" ? "sm:text-6xl xl:text-[clamp(3.75rem,4.6vw,4.5rem)]" : "sm:text-7xl"}`}>{title}</h1>
+        <h1 className={`mt-5 max-w-6xl font-serif font-bold leading-[.96] tracking-[-.035em] text-[#1A2436] ${titleSize === "compact" ? "text-[2.5rem] sm:text-6xl xl:text-[clamp(3.75rem,4.6vw,4.5rem)]" : "text-5xl sm:text-7xl"}`}>{title}</h1>
         {lead && <p className="mt-6 font-serif text-[1.35rem] leading-snug text-[#1A2436] sm:text-2xl">{lead}</p>}
         {intro && <p className={`${lead ? "mt-4" : "mt-6"} max-w-2xl text-lg leading-8 text-[#1A2436]/70`}>{intro}</p>}
         {action && <div className="mt-8">{action}</div>}

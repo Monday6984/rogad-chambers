@@ -1,15 +1,22 @@
-import { Image } from "@/components/ui/image";
-import { assets } from "@/data/assets";
 import { becomeClient } from "@/data/siteContent";
 import IntakeForm from "@/components/law/IntakeForm";
 
+// "Let's work together": the approved introduction beside the confidential intake form.
+// Keeps id="become-our-client": the site's "Become Our Client" and "Request counsel" links point here.
 export default function ClientSection() {
-  return <section id="become-our-client" className="relative overflow-hidden bg-white py-24 text-[#1A2436] lg:py-40">
-    <Image src={assets.backgrounds.lagosSkyline} alt="Lagos skyline at dusk" className="absolute inset-0 h-full w-full opacity-10" />
-    <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/60" />
-    <div className="relative mx-auto grid max-w-[1500px] gap-16 px-5 lg:grid-cols-2 lg:px-10">
-      <div><div className="space-y-5 text-lg leading-8 text-[#1A2436]/70">{becomeClient.split("\n\n").map((p, i) => <p key={i}>{p}</p>)}</div></div>
-      <div className="lg:sticky lg:top-32 lg:self-start"><IntakeForm /><p className="mt-4 text-center text-xs leading-5 text-[#6b7280]">Submitting opens WhatsApp. Your information is treated as confidential.</p></div>
+  return <section id="become-our-client" className="scroll-mt-24 bg-[#FAF8F2] py-20 text-[#1A2436] lg:py-28">
+    <div className="mx-auto grid max-w-[1500px] gap-14 px-5 lg:grid-cols-12 lg:gap-x-10 lg:px-10">
+      <div className="lg:col-span-6">
+        <p className="eyebrow">Let's work together</p>
+        <h2 className="mt-6 font-serif text-[clamp(2.5rem,4vw,3.75rem)] leading-[1.02] tracking-[-.03em] lg:mt-8">Strategic legal counsel for what matters most.</h2>
+        <span aria-hidden="true" className="mt-8 block h-px w-14 bg-[#D4AF37]" />
+        <div className="mt-8 max-w-[600px] space-y-5 text-[15px]/[1.8] text-[#1A2436]/75 lg:text-base/[1.8]">
+          {becomeClient.split("\n\n").map((p, i) => <p key={i}>{p}</p>)}
+        </div>
+      </div>
+      <div className="lg:sticky lg:top-32 lg:col-span-6 lg:self-start">
+        <IntakeForm />
+      </div>
     </div>
   </section>;
 }

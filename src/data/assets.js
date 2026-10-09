@@ -7,6 +7,9 @@ export const assets = {
   backgrounds: {
     lagosSkyline: "/images/backgrounds/lagos-skyline-dusk.webp",
     boardroom: "/images/backgrounds/golden-hour-boardroom-skyline.webp",
+    peopleHero: "/images/practices/rogad-people-hero.webp",
+    contactHero: "/images/practices/rogad-contact-hero.webp",
+    contactOffices: "/images/practices/rogad-contact-offices.webp",
     executiveDesk: "/images/backgrounds/golden-hour-executive-desk.webp",
     legalConsultation: "/images/backgrounds/legal-consultation-sunset.webp",
     strategyMeeting: "/images/backgrounds/golden-hour-strategy-meeting.webp",
