@@ -1,3 +1,12 @@
 node_modules
 dist
 .DS_Store
+
+# Original image exports; the site uses the optimised .webp copies
+public/images/practices/*.png
+
+# Unused original logo; the site uses public/images/brand/rogad-chambers-logo-2026.webp
+public/Rogad Chambers Logo.jpeg
+
+# Local review screenshots
+screenshots/

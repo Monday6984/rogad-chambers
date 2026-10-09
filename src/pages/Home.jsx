@@ -7,7 +7,7 @@ import LawyersPreview from "@/components/law/LawyersPreview";
 import InsightsPreview from "@/components/law/InsightsPreview";
 import CtaBand from "@/components/law/CtaBand";
 import Footer from "@/components/law/Footer";
-import { practiceSlug } from "@/data/practices";
+import { practicePath } from "@/data/practices";
 import { usePageTitle } from "@/hooks/use-page-title";
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
     <Header />
     <Hero />
     <FirmIntro />
-    <Practices onOpen={(p) => navigate(`/practice-areas#${practiceSlug(p.title)}`)} />
+    <Practices onOpen={(p) => navigate(practicePath(p))} />
     <LawyersPreview />
     <InsightsPreview />
     <CtaBand number="05" />

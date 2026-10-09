@@ -1,9 +1,6 @@
 import { Mail, Phone, MapPin, MessageCircle, ArrowUpRight } from "lucide-react";
+import { offices, phones, email } from "@/data/contact";
 
-const offices = [
-  { name: "Office 1", address: "House 6, Yekinni Street, Pedro, Gbagada, Lagos State, Nigeria." },
-  { name: "Office 2", address: "12, Ayo Alabi Road, Oke Ira, Ogba, Lagos State, Nigeria." }
-];
 
 export default function ContactSection() {
   return <section id="contact" className="border-t border-[#D4AF37]/40 bg-[#1A2436] pt-24 text-[#F4F1EA]">
@@ -13,17 +10,17 @@ export default function ContactSection() {
       <div className="mt-16 grid gap-px bg-[#D4AF37]/25 lg:grid-cols-2">
         {offices.map(o => <article key={o.name} className="bg-[#1A2436] p-7 sm:p-10">
           <MapPin className="mb-8 text-[#D4AF37]" />
-          <p className="eyebrow">{o.name} · Lagos</p>
+          <p className="eyebrow">{o.name} · {o.city}</p>
           <address className="mt-5 max-w-md font-serif text-2xl not-italic leading-9">{o.address}</address>
-          <a target="_blank" rel="noreferrer" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(o.address)}`} className="focus-gold mt-8 inline-flex items-center gap-2 border-b border-[#D4AF37] pb-2 text-xs uppercase tracking-[.16em] text-[#D4AF37]">View site survey <ArrowUpRight size={14} /></a>
+          <a target="_blank" rel="noreferrer" href={o.mapUrl} className="focus-gold mt-8 inline-flex items-center gap-2 border-b border-[#D4AF37] pb-2 text-xs uppercase tracking-[.16em] text-[#D4AF37]">View site survey <ArrowUpRight size={14} /></a>
         </article>)}
       </div>
       <div className="grid border-b border-[#D4AF37]/30 py-16 lg:grid-cols-2 lg:gap-10">
         <div className="space-y-6">
-          <BigLink href="tel:+2347065908039" icon={<Phone />}>+234 706 590 8039</BigLink>
-          <BigLink href="https://wa.me/2347048824491" icon={<MessageCircle />}>+234 704 882 4491</BigLink>
+          <BigLink href={phones[0].href} icon={<Phone />}>{phones[0].label}</BigLink>
+          <BigLink href={phones[1].whatsapp} icon={<MessageCircle />}>{phones[1].label}</BigLink>
         </div>
-        <BigLink href="mailto:rogadchambers@gmail.com" icon={<Mail />}>rogadchambers@gmail.com</BigLink>
+        <BigLink href={email.href} icon={<Mail />}>{email.label}</BigLink>
       </div>
     </div>
   </section>;

@@ -24,9 +24,9 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   const isActive = (l) => !l.neverActive && (pathname === l.to || pathname.startsWith(l.to + "/"));
-  return <header className={`fixed inset-x-0 top-0 z-50 border-b border-[#1A2436]/10 bg-white/95 backdrop-blur transition-all duration-500 ${small ? "py-2" : "py-4"}`}>
+  return <header className={`fixed inset-x-0 top-0 z-50 border-b border-[#1A2436]/10 bg-white/95 backdrop-blur transition-all duration-500 ${small ? "py-2" : "py-3"}`}>
     <div className="mx-auto flex max-w-[1500px] items-center justify-between px-5 lg:px-10">
-      <Link to="/" aria-label="Home" className="focus-gold"><Image src={assets.logo} alt="Rogad Chambers" loading="eager" fittingType="fit" className={`w-32 transition-all ${small ? "h-10" : "h-14"}`} /></Link>
+      <Link to="/" aria-label="Home" className="focus-gold block"><Image src={assets.logo} alt="Rogad Chambers" loading="eager" fittingType="fit" className={`block w-auto transition-all duration-500 ${small ? "h-12 lg:h-[52px]" : "h-[60px] lg:h-20"}`} /></Link>
       <nav className="hidden items-center gap-6 lg:flex">
         {links.map(l => <Link key={l.label} to={l.to} className={`focus-gold relative text-xs uppercase tracking-[.14em] transition hover:text-[#8e741e] ${isActive(l) ? "text-[#8e741e]" : "text-[#1A2436]/80"}`}>{l.label}{isActive(l) && <span className="absolute -bottom-1.5 left-0 h-0.5 w-full bg-[#D4AF37]" />}</Link>)}
         <Link to="/contact#become-our-client" className="focus-gold border border-[#D4AF37] px-5 py-3 text-xs uppercase tracking-[.14em] text-[#8e741e] transition hover:bg-[#D4AF37] hover:text-white">Become Our Client</Link>

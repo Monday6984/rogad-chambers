@@ -16,7 +16,7 @@ export default function Insights({ showHeader = true }) {
         <TabBtn active={tab === "newsletter"} onClick={() => setTab("newsletter")}>Newsletters</TabBtn>
         <TabBtn active={tab === "blog"} onClick={() => setTab("blog")}>Blog Posts</TabBtn>
       </div>
-      <div className="mt-12 divide-y divide-[#1A2436]/15 border-y border-[#1A2436]/15">
+      <div className="mt-12">
         {items.map((it, i) => <InsightRow key={it.title} item={it} index={i} />)}
       </div>
       <p className="mt-8 text-center text-sm text-[#6b7280]">Subscribe to receive future editions directly to your inbox.</p>
@@ -24,18 +24,33 @@ export default function Insights({ showHeader = true }) {
   </section>;
 }
 
+// One editorial row per article; the whole row links to /insights/<slug>.
+// Mobile stacks "01 · Date", title, excerpt, read time; from lg the number, date, text and read time become four columns.
+// The opaque cream background keeps the section's center rule behind the list rather than through article text.
 export function InsightRow({ item, index }) {
-  return <Link to={`/insights/${insightSlug(item.title)}`} className="focus-gold group flex flex-col gap-3 py-7 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
-    <div className="flex items-center gap-5">
-      <span className="font-mono text-xs text-[#D4AF37]">{`0${index + 1}`}</span>
-      <span className="text-xs uppercase tracking-[.14em] text-[#6b7280] lg:w-28 lg:shrink-0">{item.date}</span>
-    </div>
-    <div className="flex-1">
-      <h3 className="font-serif text-xl leading-tight transition group-hover:text-[#8e741e] sm:text-2xl">{item.title}</h3>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-[#6b7280]">{item.excerpt}</p>
-    </div>
-    <div className="flex items-center gap-4 text-xs uppercase tracking-[.14em] text-[#6b7280]"><span>{item.read} read</span><ArrowUpRight size={15} className="text-[#D4AF37] transition group-hover:translate-x-1" /></div>
-  </Link>;
+  return (
+    <Link
+      to={`/insights/${insightSlug(item.title)}`}
+      aria-label={`${item.title}. ${item.date}${item.read ? `, ${item.read} read` : ""}`}
+      className="focus-gold group -mx-5 grid gap-y-4 border-t border-[#1A2436]/[.12] bg-[#FAF8F2] px-5 py-8 transition-colors duration-500 last:border-b hover:bg-[#FDFCF8] lg:-mx-6 lg:grid-cols-[minmax(0,.6fr)_minmax(0,1.4fr)_minmax(0,6fr)_minmax(0,2fr)] lg:items-baseline lg:gap-x-8 lg:px-6 lg:py-9"
+    >
+      <div className="flex items-center gap-3 text-[11px] lg:contents">
+        <span className="tracking-[.22em] text-[#8e741e]">{String(index + 1).padStart(2, "0")}</span>
+        <span aria-hidden="true" className="text-[#6b7280] lg:hidden">·</span>
+        <span className="uppercase tracking-[.16em] text-[#6b7280] lg:text-[11px]">{item.date}</span>
+      </div>
+      <div>
+        <h3 className="max-w-[640px] font-serif text-[1.3rem] leading-[1.2] transition-colors duration-500 group-hover:text-[#8e741e] lg:text-[1.4rem]">{item.title}</h3>
+        {item.excerpt && <p className="mt-3 max-w-[560px] text-[13.5px]/[1.65] text-[#6b7280] lg:text-sm/[1.7]">{item.excerpt}</p>}
+      </div>
+      {item.read && (
+        <span className="flex items-center gap-2 text-[11px] uppercase tracking-[.16em] text-[#8e741e] lg:justify-self-end">
+          {item.read} read
+          <ArrowUpRight size={14} aria-hidden="true" className="transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none" />
+        </span>
+      )}
+    </Link>
+  );
 }
 
 function TabBtn({ active, onClick, children }) {

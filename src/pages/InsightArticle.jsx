@@ -4,12 +4,14 @@ import { newsletters, blogPosts, insightSlug } from "@/data/insights";
 import Header from "@/components/law/Header";
 import PageHero from "@/components/law/PageHero";
 import Footer from "@/components/law/Footer";
-import { usePageTitle } from "@/hooks/use-page-title";
+import { usePageTitle, usePageDescription, usePageMeta } from "@/hooks/use-page-title";
 
 export default function InsightArticle() {
   const { slug } = useParams();
   const item = [...newsletters, ...blogPosts].find(it => insightSlug(it.title) === slug);
   usePageTitle(item ? item.title : "Article not found");
+  usePageDescription(item?.excerpt);
+  usePageMeta(item ? { title: item.title, description: item.excerpt, image: item.image, type: "article" } : undefined);
   return <main className="overflow-x-hidden bg-white text-[#1A2436]">
     <Header />
     {item ? <>
