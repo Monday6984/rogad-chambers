@@ -27,7 +27,7 @@ export default function AboutPeople() {
 
         <LawyerGrid items={people} columns={4} compact />
 
-        <Link to="/people" className="focus-gold group mt-16 inline-flex items-center gap-3 border-b border-[#D4AF37]/50 py-3 text-xs uppercase tracking-[.18em] text-[#8e741e] transition-colors duration-300 hover:border-[#D4AF37]">
+        <Link to="/people" className="focus-gold group mt-16 inline-flex items-center gap-3 border-b border-[#D4AF37]/50 py-3 text-xs uppercase tracking-[.18em] text-[#876e1d] transition-colors duration-300 hover:border-[#D4AF37]">
           Meet our people
           <ArrowUpRight size={15} aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transform-none" />
         </Link>

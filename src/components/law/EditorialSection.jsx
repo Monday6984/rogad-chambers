@@ -14,14 +14,14 @@ export default function EditorialSection({ id, eyebrow, lines, lead, leadTone = 
         </div>
 
         <div className="lg:col-span-6 lg:col-start-7">
-          <p className={`border-l border-[#D4AF37] pl-6 font-serif text-[1.2rem]/[1.45] lg:text-[1.4rem]/[1.45] ${leadTone === "gold" ? "text-[#8e741e]" : ""}`}>{lead}</p>
+          <p className={`border-l border-[#D4AF37] pl-6 font-serif text-[1.2rem]/[1.45] lg:text-[1.4rem]/[1.45] ${leadTone === "gold" ? "text-[#876e1d]" : ""}`}>{lead}</p>
           <div className="mt-8 max-w-[640px] space-y-6 pl-6 text-[15px]/[1.8] text-[#1A2436]/75">
             {paragraphs.map((p) => <p key={p.slice(0, 40)}>{p}</p>)}
           </div>
           {principles && (
             <ul className="ml-6 mt-12 grid max-w-[640px] grid-cols-3 border-y border-[#D4AF37]/40">
               {principles.map((p, i) => (
-                <li key={p} className={`py-5 text-center text-[10px] uppercase tracking-[.14em] text-[#8e741e] sm:text-[11px] sm:tracking-[.18em] ${i ? "border-l border-[#D4AF37]/40" : ""}`}>{p}</li>
+                <li key={p} className={`py-5 text-center text-[10px] uppercase tracking-[.14em] text-[#876e1d] sm:text-[11px] sm:tracking-[.18em] ${i ? "border-l border-[#D4AF37]/40" : ""}`}>{p}</li>
               ))}
             </ul>
           )}

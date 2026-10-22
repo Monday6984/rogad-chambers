@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { Image } from "@/components/ui/image";
@@ -8,7 +8,10 @@ import { insightPath, insightTypes, featuredInsight, insightImage, insightPracti
 // so a tab can be linked to), then a quiet "stay informed" note. The featured article is left out of its list.
 export default function Insights() {
   const [params, setParams] = useSearchParams();
-  const active = insightTypes.find((t) => t.id === params.get("type")) ?? insightTypes[0];
+  // Pre-rendered HTML always shows the first tab; follow ?type= only once the page is live, so the first render matches it
+  const [live, setLive] = useState(false);
+  useEffect(() => setLive(true), []);
+  const active = (live && insightTypes.find((t) => t.id === params.get("type"))) || insightTypes[0];
   const items = active.items.filter((it) => it.title !== featuredInsight?.title);
   const tabs = useRef([]);
   const select = (t, focus) => {
@@ -34,7 +37,7 @@ export default function Insights() {
             const on = t === active;
             return (
               <button key={t.id} ref={(el) => (tabs.current[i] = el)} role="tab" id={`tab-${t.id}`} aria-selected={on} aria-controls="insight-list" tabIndex={on ? 0 : -1} onClick={() => select(t)}
-                className={`focus-gold relative px-5 py-4 text-xs uppercase tracking-[.18em] transition-colors sm:px-6 ${on ? "text-[#1A2436]" : "text-[#1A2436]/55 hover:text-[#1A2436]"}`}>
+                className={`focus-gold relative px-5 py-4 text-xs uppercase tracking-[.18em] transition-colors sm:px-6 ${on ? "text-[#1A2436]" : "text-[#1A2436]/70 hover:text-[#1A2436]"}`}>
                 {t.label}
                 {on && <span aria-hidden="true" className="absolute -bottom-px left-0 h-0.5 w-full bg-[#D4AF37]" />}
               </button>
@@ -78,14 +81,14 @@ function FeaturedInsight({ item }) {
           )}
           <div className={image ? "lg:col-span-6 lg:col-start-7" : "lg:col-span-8"}>
             <p className="eyebrow">Featured {item.typeLabel.toLowerCase()}</p>
-            <h2 className="mt-5 font-serif text-[clamp(2rem,3.4vw,3.25rem)] leading-[1.08] tracking-[-.02em] transition-colors duration-500 group-hover:text-[#8e741e]">{item.title}</h2>
+            <h2 className="mt-5 font-serif text-[clamp(2rem,3.4vw,3.25rem)] leading-[1.08] tracking-[-.02em] transition-colors duration-500 group-hover:text-[#876e1d]">{item.title}</h2>
             <p className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] uppercase tracking-[.16em] text-[#6b7280]">
               <span>{item.date}</span>
               {item.read && <><span aria-hidden="true" className="h-3 w-px bg-[#1A2436]/20" /><span>{item.read} read</span></>}
-              {practice && <><span aria-hidden="true" className="h-3 w-px bg-[#1A2436]/20" /><span className="text-[#8e741e]">{practice.title}</span></>}
+              {practice && <><span aria-hidden="true" className="h-3 w-px bg-[#1A2436]/20" /><span className="text-[#876e1d]">{practice.title}</span></>}
             </p>
             <p className="mt-5 max-w-[560px] text-[15px]/[1.8] text-[#1A2436]/75">{item.excerpt}</p>
-            <span className="mt-6 inline-flex items-center gap-2 border-b border-[#D4AF37]/60 py-2 text-[11px] uppercase tracking-[.16em] text-[#8e741e]">
+            <span className="mt-6 inline-flex items-center gap-2 border-b border-[#D4AF37]/60 py-2 text-[11px] uppercase tracking-[.16em] text-[#876e1d]">
               Read insight <ArrowUpRight size={13} aria-hidden="true" className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none" />
             </span>
           </div>
@@ -102,20 +105,19 @@ export function InsightRow({ item, index }) {
   return (
     <Link
       to={insightPath(item)}
-      aria-label={`${item.title}. ${item.date}${item.read ? `, ${item.read} read` : ""}`}
       className="focus-gold group -mx-5 grid gap-y-4 border-t border-[#1A2436]/[.12] bg-[#FAF8F2] px-5 py-8 transition-colors duration-500 last:border-b hover:bg-[#FDFCF8] lg:-mx-6 lg:grid-cols-[minmax(0,.6fr)_minmax(0,1.4fr)_minmax(0,6fr)_minmax(0,2fr)] lg:items-baseline lg:gap-x-8 lg:px-6 lg:py-9"
     >
       <div className="flex items-center gap-3 text-[11px] lg:contents">
-        <span className="tracking-[.22em] text-[#8e741e]">{String(index + 1).padStart(2, "0")}</span>
+        <span className="tracking-[.22em] text-[#876e1d]">{String(index + 1).padStart(2, "0")}</span>
         <span aria-hidden="true" className="text-[#6b7280] lg:hidden">·</span>
         <span className="uppercase tracking-[.16em] text-[#6b7280] lg:text-[11px]">{item.date}</span>
       </div>
       <div>
-        <h3 className="max-w-[640px] font-serif text-[1.3rem] leading-[1.2] transition-colors duration-500 group-hover:text-[#8e741e] lg:text-[1.4rem]">{item.title}</h3>
+        <h3 className="max-w-[640px] font-serif text-[1.3rem] leading-[1.2] transition-colors duration-500 group-hover:text-[#876e1d] lg:text-[1.4rem]">{item.title}</h3>
         {item.excerpt && <p className="mt-3 max-w-[560px] text-[13.5px]/[1.65] text-[#6b7280] lg:text-sm/[1.7]">{item.excerpt}</p>}
       </div>
       {item.read && (
-        <span className="flex items-center gap-2 text-[11px] uppercase tracking-[.16em] text-[#8e741e] lg:justify-self-end">
+        <span className="flex items-center gap-2 text-[11px] uppercase tracking-[.16em] text-[#876e1d] lg:justify-self-end">
           {item.read} read
           <ArrowUpRight size={14} aria-hidden="true" className="transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none" />
         </span>

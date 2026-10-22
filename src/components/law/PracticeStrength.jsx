@@ -29,7 +29,7 @@ export default function PracticeStrength() {
         <ul className="mt-12 grid max-w-[560px] grid-cols-3 border-t border-[#1A2436]/[.12] pt-8">
           {points.map(({ icon: Icon, lines }, i) => (
             <li key={lines[0]} className={i ? "border-l border-[#1A2436]/[.12] pl-4 sm:pl-6" : "pr-4"}>
-              <Icon size={22} strokeWidth={1.25} aria-hidden="true" className="text-[#8e741e]" />
+              <Icon size={22} strokeWidth={1.25} aria-hidden="true" className="text-[#876e1d]" />
               <p className="mt-4 font-serif text-[1.05rem] leading-[1.25] sm:text-lg">
                 {lines.map((l) => <span key={l} className="block">{l}</span>)}
               </p>

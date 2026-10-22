@@ -26,7 +26,7 @@ export default function FirmIntro() {
 
         <motion.div {...reveal(0.12)} className="lg:col-span-6 lg:col-start-7">
           <p className="max-w-[600px] text-[15px]/[1.8] text-[#1A2436]/75 lg:text-base/[1.75]">{about.split("\n\n")[0]}</p>
-          <Link to="/about" className="focus-gold group mt-9 inline-flex items-center gap-3 text-[11px] uppercase tracking-[.16em] text-[#8e741e] transition-colors hover:text-[#1A2436] sm:text-xs lg:mt-10">
+          <Link to="/about" className="focus-gold group mt-9 inline-flex items-center gap-3 text-[11px] uppercase tracking-[.16em] text-[#876e1d] transition-colors hover:text-[#1A2436] sm:text-xs lg:mt-10">
             Discover the firm
             <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none" />
           </Link>

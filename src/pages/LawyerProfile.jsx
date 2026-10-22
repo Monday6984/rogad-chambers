@@ -5,14 +5,17 @@ import { findLawyer, lawyerBioParagraphs, lawyerPath, lawyerQualifications, lawy
 import Header from "@/components/law/Header";
 import Footer from "@/components/law/Footer";
 import LawyerPortrait from "@/components/law/LawyerPortrait";
-import { usePageTitle, usePageDescription } from "@/hooks/use-page-title";
+import { usePageTitle, usePageDescription, usePageMeta, useNoIndex } from "@/hooks/use-page-title";
 
 // One template for every lawyer at /our-people/:slug. Sections only render when the data for them exists.
 export default function LawyerProfile() {
   const { slug } = useParams();
   const lawyer = findLawyer(slug);
   usePageTitle(lawyer ? lawyer.name : "Profile not found");
-  usePageDescription(lawyer && [`${lawyer.name}, ${lawyer.title} at Rogad Chambers.`, lawyer.focus].filter(Boolean).join(" "));
+  const description = lawyer && [`${lawyer.name}, ${lawyer.title} at Rogad Chambers.`, lawyer.focus].filter(Boolean).join(" ");
+  usePageDescription(description);
+  usePageMeta(lawyer ? { title: lawyer.name, description, image: lawyer.profile_image, type: "profile" } : undefined);
+  useNoIndex(!lawyer);
 
   // Old profile URLs (e.g. after a name change) redirect to the current one
   if (lawyer && lawyerSlug(lawyer.name) !== slug) return <Navigate to={lawyerPath(lawyer)} replace />;
@@ -57,7 +60,7 @@ function Profile({ lawyer }) {
             <Link to="/people" className="eyebrow focus-gold inline-flex items-center gap-2"><ArrowLeft size={13} aria-hidden="true" /> Our People</Link>
             <h1 className="mt-8 font-serif text-[clamp(3.5rem,7vw,7rem)] font-bold leading-[.92] tracking-[-.04em]">{lawyer.name}</h1>
             <p className="mt-8 text-lg text-[#1A2436]/75">{lawyer.title}</p>
-            {lawyer.specialization && <p className="mt-3 text-xs uppercase tracking-[.18em] text-[#8e741e]">{lawyer.specialization}</p>}
+            {lawyer.specialization && <p className="mt-3 text-xs uppercase tracking-[.18em] text-[#876e1d]">{lawyer.specialization}</p>}
           </div>
           <div className="lg:col-span-4 lg:col-start-9">
             <LawyerPortrait lawyer={lawyer} loading="eager" className="aspect-[4/5] w-full max-w-[420px] lg:ml-auto" />
@@ -77,7 +80,7 @@ function Profile({ lawyer }) {
           ))}
 
           <div className="flex flex-col gap-6 border-t border-[#1A2436]/10 pt-10 sm:flex-row sm:items-center sm:justify-between lg:pt-14">
-            <Link to="/contact#become-our-client" className="focus-gold group inline-flex items-center gap-3 text-xs uppercase tracking-[.18em] text-[#8e741e]">
+            <Link to="/contact#become-our-client" className="focus-gold group inline-flex items-center gap-3 text-xs uppercase tracking-[.18em] text-[#876e1d]">
               Request counsel <ArrowUpRight size={15} aria-hidden="true" className="transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none" />
             </Link>
             <Link to="/people" className="focus-gold inline-flex items-center gap-3 text-xs uppercase tracking-[.18em] text-[#6b7280]"><ArrowLeft size={15} aria-hidden="true" /> All people</Link>
@@ -95,7 +98,7 @@ function NotFound() {
         <p className="eyebrow">Our People</p>
         <h1 className="mt-5 font-serif text-5xl font-bold leading-[.96] tracking-[-.035em] sm:text-7xl">Profile not found.</h1>
         <p className="mt-6 max-w-2xl text-lg leading-8 text-[#1A2436]/70">The link may be out of date. Browse the full team instead.</p>
-        <Link to="/people" className="focus-gold mt-10 inline-flex items-center gap-3 text-xs uppercase tracking-[.18em] text-[#8e741e]"><ArrowLeft size={15} aria-hidden="true" /> All people</Link>
+        <Link to="/people" className="focus-gold mt-10 inline-flex items-center gap-3 text-xs uppercase tracking-[.18em] text-[#876e1d]"><ArrowLeft size={15} aria-hidden="true" /> All people</Link>
       </div>
     </section>
   );

@@ -12,7 +12,7 @@
 //   qualifications  list for the profile page; older entries use `bar`, a " · "-separated string
 //   bio             profile text; blank lines separate paragraphs
 //   formerSlugs     old profile URLs that should redirect to the current one
-export const lawyers = [
+const allLawyers = [
   {
     name: "Gbenga Joshua Onabanjo",
     title: "Founder and Principal Partner",
@@ -129,13 +129,17 @@ Known for his analytical approach, professionalism and commitment to ethical bus
 
 At Rogad Chambers, he brings this multidisciplinary perspective to the firm’s advisory practice, contributing to the delivery of practical, commercially informed and risk-conscious legal solutions for businesses and organisations.`
   },
-  { name: "Chidi Okafor", title: "Senior Associate", initials: "CO", specialization: "Media & Entertainment", focus: "Talent agreements, film financing, and brand protection.", bar: "Nigerian Bar Association" },
-  { name: "Ngozi Eze", title: "Senior Associate", initials: "NE", specialization: "Real Estate & Conveyancing", focus: "Title perfection, commercial leasing, and development finance.", bar: "Nigerian Bar Association" },
-  { name: "Ibrahim Suleiman", title: "Senior Associate", initials: "IS", specialization: "Aviation & Maritime", focus: "Aircraft leasing, shipping disputes, and cabotage compliance.", bar: "Nigerian Bar Association" },
-  { name: "Tola Adebayo", title: "Associate", initials: "TA", specialization: "Corporate Advisory", focus: "Start-up formation, commercial contracts, and regulatory compliance.", bar: "Nigerian Bar Association" },
-  { name: "Emeka Obi", title: "Associate", initials: "EO", specialization: "Litigation & Dispute Resolution", focus: "Debt recovery, employment disputes, and civil claims.", bar: "Nigerian Bar Association" },
-  { name: "Halima Bello", title: "Associate", initials: "HB", specialization: "Technology & Data Privacy", focus: "Fintech regulation, cybersecurity, and digital commerce.", bar: "Nigerian Bar Association" }
+  { placeholder: true, name: "Chidi Okafor", title: "Senior Associate", initials: "CO", specialization: "Media & Entertainment", focus: "Talent agreements, film financing, and brand protection.", bar: "Nigerian Bar Association" },
+  { placeholder: true, name: "Ngozi Eze", title: "Senior Associate", initials: "NE", specialization: "Real Estate & Conveyancing", focus: "Title perfection, commercial leasing, and development finance.", bar: "Nigerian Bar Association" },
+  { placeholder: true, name: "Ibrahim Suleiman", title: "Senior Associate", initials: "IS", specialization: "Aviation & Maritime", focus: "Aircraft leasing, shipping disputes, and cabotage compliance.", bar: "Nigerian Bar Association" },
+  { placeholder: true, name: "Tola Adebayo", title: "Associate", initials: "TA", specialization: "Corporate Advisory", focus: "Start-up formation, commercial contracts, and regulatory compliance.", bar: "Nigerian Bar Association" },
+  { placeholder: true, name: "Emeka Obi", title: "Associate", initials: "EO", specialization: "Litigation & Dispute Resolution", focus: "Debt recovery, employment disputes, and civil claims.", bar: "Nigerian Bar Association" },
+  { placeholder: true, name: "Halima Bello", title: "Associate", initials: "HB", specialization: "Technology & Data Privacy", focus: "Fintech regulation, cybersecurity, and digital commerce.", bar: "Nigerian Bar Association" }
 ];
+
+// Entries marked `placeholder: true` are template data awaiting the firm's real associates. They are left out
+// everywhere (cards, the Associates section and profile pages). Replace each with real details and remove the flag to publish it.
+export const lawyers = allLawyers.filter((l) => !l.placeholder);
 
 export const lawyerSlug = (name) => name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 export const lawyerPath = (lawyer) => `/our-people/${lawyerSlug(lawyer.name)}`;

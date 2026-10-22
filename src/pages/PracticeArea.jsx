@@ -7,7 +7,7 @@ import PracticeCta from "@/components/law/PracticeCta";
 import PracticeSections from "@/components/law/PracticeSections";
 import Footer from "@/components/law/Footer";
 import { findPractice } from "@/data/practices";
-import { usePageTitle, usePageDescription, usePageMeta } from "@/hooks/use-page-title";
+import { usePageTitle, usePageDescription, usePageMeta, useNoIndex } from "@/hooks/use-page-title";
 
 // One template for every practice at /practice-areas/:slug, from src/data/practices.js.
 // Practices with a `detail` object get its structured sections; others show their approved write-up as one overview.
@@ -17,6 +17,7 @@ export default function PracticeArea() {
   const description = practice?.detail?.seoDescription ?? practice?.description;
   usePageTitle(practice ? practice.title : "Practice area not found");
   usePageDescription(description);
+  useNoIndex(!practice);
   usePageMeta(practice ? { title: practice.title, description, image: practice.detail?.heroImage ?? practice.image, type: "article" } : undefined);
 
   return (
@@ -53,7 +54,7 @@ function Practice({ practice }) {
       <section className="border-t border-[#1A2436]/10 bg-white pb-20 pt-16 lg:pb-24 lg:pt-20">
         <div className="mx-auto mb-8 flex max-w-[1500px] items-center justify-between gap-6 px-5 lg:px-10">
           <h2 className="eyebrow">Our practice areas</h2>
-          <Link to="/practice-areas" className="focus-gold group inline-flex items-center gap-2 text-[11px] uppercase tracking-[.16em] text-[#8e741e]"><ArrowLeft size={13} aria-hidden="true" /> All practice areas</Link>
+          <Link to="/practice-areas" className="focus-gold group inline-flex items-center gap-2 text-[11px] uppercase tracking-[.16em] text-[#876e1d]"><ArrowLeft size={13} aria-hidden="true" /> All practice areas</Link>
         </div>
         <PracticeNavigator current={practice.title} label="Our practice areas" />
       </section>
@@ -66,7 +67,7 @@ function Practice({ practice }) {
 // Gold call to action in the hero, to the same contact route as the CTA band.
 function HeroCta({ label }) {
   return (
-    <Link to="/contact#become-our-client" className="focus-gold group inline-flex items-center gap-3 bg-[#D4AF37] px-6 py-3.5 text-xs uppercase tracking-[.18em] text-[#1A2436] transition-colors duration-300 hover:bg-[#8e741e] hover:text-white">
+    <Link to="/contact#become-our-client" className="focus-gold group inline-flex items-center gap-3 bg-[#D4AF37] px-6 py-3.5 text-xs uppercase tracking-[.18em] text-[#1A2436] transition-colors duration-300 hover:bg-[#876e1d] hover:text-white">
       {label}
       <ArrowUpRight size={15} aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transform-none" />
     </Link>
@@ -106,7 +107,7 @@ function NotFound() {
       <div className="mx-auto max-w-[1500px] px-5 lg:px-10">
         <p className="eyebrow">Practice Areas</p>
         <h1 className="mt-5 font-serif text-5xl font-bold leading-[.96] tracking-[-.035em] sm:text-7xl">Practice area not found.</h1>
-        <Link to="/practice-areas" className="focus-gold mt-10 inline-flex items-center gap-3 text-xs uppercase tracking-[.18em] text-[#8e741e]"><ArrowLeft size={15} aria-hidden="true" /> All practice areas</Link>
+        <Link to="/practice-areas" className="focus-gold mt-10 inline-flex items-center gap-3 text-xs uppercase tracking-[.18em] text-[#876e1d]"><ArrowLeft size={15} aria-hidden="true" /> All practice areas</Link>
       </div>
     </section>
   );

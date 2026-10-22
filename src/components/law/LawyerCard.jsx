@@ -9,17 +9,17 @@ export default function LawyerCard({ lawyer, index, compact = false }) {
   const qualifications = compact ? [] : lawyerQualifications(lawyer);
 
   return (
-    <Link to={lawyerPath(lawyer)} aria-label={`${lawyer.name}, ${lawyer.title}. View profile`} className="focus-gold group flex h-full flex-col text-[#1A2436]">
+    <Link to={lawyerPath(lawyer)} className="focus-gold group flex h-full flex-col text-[#1A2436]">
       <LawyerPortrait lawyer={lawyer} interactive className="aspect-[4/5] w-full" />
 
-      <p className="mt-6 text-[11px] tracking-[.22em] text-[#8e741e]">{String(index + 1).padStart(2, "0")}</p>
-      <h3 className="mt-3 font-serif text-[1.3rem] leading-[1.1] transition-colors duration-500 group-hover:text-[#8e741e]">{lawyer.name}</h3>
+      <p className="mt-6 text-[11px] tracking-[.22em] text-[#876e1d]">{String(index + 1).padStart(2, "0")}</p>
+      <h3 className="mt-3 font-serif text-[1.3rem] leading-[1.1] transition-colors duration-500 group-hover:text-[#876e1d]">{lawyer.name}</h3>
       <p className="mt-2 text-sm text-[#1A2436]/70">{lawyer.title}</p>
-      {lawyer.specialization && <p className="mt-4 text-[10.5px] uppercase leading-relaxed tracking-[.14em] text-[#8e741e]">{lawyer.specialization}</p>}
+      {lawyer.specialization && <p className="mt-4 text-[10.5px] uppercase leading-relaxed tracking-[.14em] text-[#876e1d]">{lawyer.specialization}</p>}
       {!compact && lawyer.focus && <p className="mt-3 text-[13.5px] leading-[1.65] text-[#6b7280]">{lawyer.focus}</p>}
       {qualifications.length > 0 && <p className="mt-4 border-t border-[#1A2436]/10 pt-3 text-xs leading-relaxed text-[#6b7280]">{qualifications.join(" · ")}</p>}
 
-      <span className="mt-auto flex items-center gap-2 pt-6 text-[10.5px] uppercase tracking-[.16em] text-[#8e741e]">
+      <span className="mt-auto flex items-center gap-2 pt-6 text-[10.5px] uppercase tracking-[.16em] text-[#876e1d]">
         <span aria-hidden="true" className="-mr-2 h-px w-0 bg-[#D4AF37] transition-all duration-500 group-hover:mr-0 group-hover:w-6 motion-reduce:transition-none" />
         View profile
         <ArrowUpRight size={14} aria-hidden="true" className="transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none" />

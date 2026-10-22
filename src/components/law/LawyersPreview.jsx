@@ -25,7 +25,7 @@ export default function LawyersPreview() {
 
         <LawyerGrid items={partners} />
 
-        <Link to="/people" className="focus-gold mt-16 inline-flex items-center gap-3 text-xs uppercase tracking-[.18em] text-[#8e741e]">Meet our people <ArrowUpRight size={15} /></Link>
+        <Link to="/people" className="focus-gold mt-16 inline-flex items-center gap-3 text-xs uppercase tracking-[.18em] text-[#876e1d]">Meet our people <ArrowUpRight size={15} /></Link>
       </div>
     </section>
   );

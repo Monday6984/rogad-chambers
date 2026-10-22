@@ -30,7 +30,7 @@
 }
 
 @layer components {
-  .eyebrow { @apply text-xs uppercase tracking-[0.22em] text-[#8e741e]; }
+  .eyebrow { @apply text-xs uppercase tracking-[0.22em] text-[#876e1d]; }
   .focus-gold { @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D4AF37]; }
   .rule-section { background-image: linear-gradient(to right, transparent calc(50% - .5px), rgba(212,175,55,.18) 50%, transparent calc(50% + .5px)); }
   .field { @apply w-full border-0 border-b border-[#1A2436]/30 bg-transparent px-0 py-3 text-lg text-[#1A2436] outline-none transition placeholder:text-[#1A2436]/40 focus:border-[#D4AF37]; }

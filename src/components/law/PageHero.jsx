@@ -14,7 +14,7 @@ export default function PageHero({ eyebrow, title, lead, intro, action, image, i
     {image && <div aria-hidden="true" className="absolute left-1/2 top-0 hidden h-full w-px bg-[#D4AF37]/25 lg:block" />}
     {image && (
       <div className="absolute bottom-0 right-0 top-[105px] hidden w-[calc(50%-20px)] lg:block">
-        <Image src={image} alt={imageAlt} loading="eager" className="h-full w-full" style={{ objectPosition: imagePosition }} />
+        <Image src={image} alt={imageAlt} loading="eager" fetchpriority="high" className="h-full w-full" style={{ objectPosition: imagePosition }} />
         {imageLabel?.length > 0 && (
           // Small translucent backing keeps the caption legible over bright parts of the photo
           <p className="absolute bottom-10 right-10 border-l border-[#D4AF37] bg-[#1A2436]/70 py-3 pl-4 pr-5 text-[11px] uppercase leading-[2] tracking-[.2em] text-[#D4AF37] backdrop-blur-sm">

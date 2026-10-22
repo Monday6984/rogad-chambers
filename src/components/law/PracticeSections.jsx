@@ -65,7 +65,7 @@ function NumberedGrid({ items, columns, start = 0 }) {
     <ol className={`grid border-t border-[#1A2436]/[.12] ${grid.cls}`}>
       {items.map((item, i) => (
         <li key={item} className={`flex gap-4 border-b border-[#1A2436]/[.12] py-5 sm:px-5 ${i % 2 ? "sm:border-l" : "sm:border-l-0 sm:pl-0"} ${i % grid.n ? dividers[grid.bp].on : dividers[grid.bp].off}`}>
-          <span className="pt-0.5 text-[11px] tracking-[.18em] text-[#8e741e]">{String(start + i + 1).padStart(2, "0")}</span>
+          <span className="pt-0.5 text-[11px] tracking-[.18em] text-[#876e1d]">{String(start + i + 1).padStart(2, "0")}</span>
           <span className="text-[15px] leading-snug">{item}</span>
         </li>
       ))}
@@ -157,8 +157,8 @@ function RelatedPractices({ titles }) {
       {items.map((p) => (
         <li key={p.number} className="border-b border-[#1A2436]/[.12]">
           <Link to={practicePath(p)} className="focus-gold group flex items-center justify-between gap-6 py-4">
-            <span className="font-serif text-lg leading-snug transition-colors duration-300 group-hover:text-[#8e741e]">{p.title}</span>
-            <span className="flex shrink-0 items-center gap-2 text-[11px] uppercase tracking-[.16em] text-[#8e741e]">
+            <span className="font-serif text-lg leading-snug transition-colors duration-300 group-hover:text-[#876e1d]">{p.title}</span>
+            <span className="flex shrink-0 items-center gap-2 text-[11px] uppercase tracking-[.16em] text-[#876e1d]">
               Explore <ArrowUpRight size={13} aria-hidden="true" className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none" />
             </span>
           </Link>
@@ -183,7 +183,7 @@ function PracticeSteps({ label, title, steps }) {
         <ol className="grid gap-y-10 md:grid-cols-3 lg:col-span-8 lg:col-start-5">
           {steps.map((step, i) => (
             <li key={step.title} className={`border-t border-[#1A2436]/[.12] pt-6 md:border-t-0 md:pt-0 ${i ? "md:border-l md:border-[#1A2436]/[.12] md:pl-8" : "md:pr-8"} ${i === 1 ? "md:pr-8" : ""}`}>
-              {stepIcons[step.icon] ? <StepIcon icon={stepIcons[step.icon]} /> : <span className="font-serif text-[2.5rem] leading-none text-[#D4AF37]">{String(i + 1).padStart(2, "0")}</span>}
+              {stepIcons[step.icon] ? <StepIcon icon={stepIcons[step.icon]} /> : <span className="font-serif text-[2.5rem] leading-none text-[#876e1d]">{String(i + 1).padStart(2, "0")}</span>}
               <h3 className="mt-6 font-serif text-[1.35rem] leading-tight">{step.title}</h3>
               <p className={`mt-3 ${body}`}>{step.text}</p>
             </li>
@@ -196,7 +196,7 @@ function PracticeSteps({ label, title, steps }) {
 
 function StepIcon({ icon: Icon }) {
   return (
-    <span aria-hidden="true" className="flex h-14 w-14 items-center justify-center rounded-full border border-[#D4AF37]/70 text-[#8e741e]">
+    <span aria-hidden="true" className="flex h-14 w-14 items-center justify-center rounded-full border border-[#D4AF37]/70 text-[#876e1d]">
       <Icon size={24} strokeWidth={1.25} />
     </span>
   );

@@ -9,11 +9,13 @@ import LawyerProfile from "@/pages/LawyerProfile";
 import Insights from "@/pages/Insights";
 import InsightArticle from "@/pages/InsightArticle";
 import Contact from "@/pages/Contact";
+import Privacy from "@/pages/Privacy";
 import PageNotFound from "@/pages/PageNotFound";
 
-export default function App() {
+// The route table, shared by the browser (App, below) and pre-rendering (src/entry-server.jsx).
+export function AppRoutes() {
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -26,8 +28,13 @@ export default function App() {
         <Route path="/insights" element={<Insights />} />
         <Route path="/insights/:slug" element={<InsightArticle />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy" element={<Privacy />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-    </Router>
+    </>
   );
+}
+
+export default function App() {
+  return <Router><AppRoutes /></Router>;
 }

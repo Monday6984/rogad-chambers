@@ -6,7 +6,7 @@ import { Image } from "@/components/ui/image";
 import Header from "@/components/law/Header";
 import PageHero from "@/components/law/PageHero";
 import Footer from "@/components/law/Footer";
-import { usePageTitle, usePageDescription, usePageMeta } from "@/hooks/use-page-title";
+import { usePageTitle, usePageDescription, usePageMeta, useNoIndex } from "@/hooks/use-page-title";
 
 // One template for every newsletter and blog post at /insights/:slug.
 export default function InsightArticle() {
@@ -14,6 +14,7 @@ export default function InsightArticle() {
   const item = findInsight(slug);
   usePageTitle(item ? item.title : "Article not found");
   usePageDescription(item?.excerpt);
+  useNoIndex(!item);
   usePageMeta(item ? { title: item.title, description: item.excerpt, image: item.image, type: "article" } : undefined);
 
   return <main className="overflow-x-hidden bg-white text-[#1A2436]">
@@ -39,7 +40,7 @@ function Article({ item }) {
             <Meta label="Published"><time>{item.date}</time></Meta>
             {item.read && <Meta label="Reading time">{item.read} read</Meta>}
             {practices.length > 0 && <Meta label={practices.length > 1 ? "Practice areas" : "Practice area"}>
-              <ul className="space-y-2">{practices.map((p) => <li key={p.number}><Link to={practicePath(p)} className="focus-gold text-[#8e741e] underline-offset-4 hover:underline">{p.title}</Link></li>)}</ul>
+              <ul className="space-y-2">{practices.map((p) => <li key={p.number}><Link to={practicePath(p)} className="focus-gold text-[#876e1d] underline-offset-4 hover:underline">{p.title}</Link></li>)}</ul>
             </Meta>}
           </dl>
           <Link to="/insights" className="focus-gold mt-8 inline-flex items-center gap-2 text-[11px] uppercase tracking-[.16em] text-[#1A2436]/70 hover:text-[#1A2436]"><ArrowLeft size={13} aria-hidden="true" /> All insights</Link>
@@ -54,7 +55,7 @@ function Article({ item }) {
           {item.body
             ? <Body text={item.body} />
             : <p className="mt-10 text-[15px] italic text-[#6b7280]">Full article coming soon.</p>}
-          {item.pdf && <a href={item.pdf} download className="focus-gold mt-10 inline-flex items-center gap-2 border border-[#D4AF37] px-5 py-3 text-xs uppercase tracking-[.16em] text-[#8e741e]">Download PDF edition <ArrowUpRight size={14} aria-hidden="true" /></a>}
+          {item.pdf && <a href={item.pdf} download className="focus-gold mt-10 inline-flex items-center gap-2 border border-[#D4AF37] px-5 py-3 text-xs uppercase tracking-[.16em] text-[#876e1d]">Download PDF edition <ArrowUpRight size={14} aria-hidden="true" /></a>}
         </div>
       </div>
     </article>
@@ -66,8 +67,8 @@ function Article({ item }) {
           {related.map((r) => <li key={r.title} className="bg-[#FAF8F2]">
             <Link to={insightPath(r)} className="focus-gold group flex h-full flex-col gap-3 py-6 md:px-6">
               <span className="text-[11px] uppercase tracking-[.16em] text-[#6b7280]">{r.typeLabel} · {r.date}</span>
-              <span className="font-serif text-[1.3rem] leading-snug transition-colors group-hover:text-[#8e741e]">{r.title}</span>
-              <span className="mt-auto flex items-center gap-2 pt-2 text-[11px] uppercase tracking-[.16em] text-[#8e741e]">Read insight <ArrowUpRight size={13} aria-hidden="true" /></span>
+              <span className="font-serif text-[1.3rem] leading-snug transition-colors group-hover:text-[#876e1d]">{r.title}</span>
+              <span className="mt-auto flex items-center gap-2 pt-2 text-[11px] uppercase tracking-[.16em] text-[#876e1d]">Read insight <ArrowUpRight size={13} aria-hidden="true" /></span>
             </Link>
           </li>)}
         </ul>
@@ -97,7 +98,7 @@ function NotFound() {
     <div className="mx-auto max-w-[1500px] px-5 lg:px-10">
       <p className="eyebrow">Insights</p>
       <h1 className="mt-5 font-serif text-5xl font-bold leading-[.96] tracking-[-.035em] text-[#1A2436] sm:text-7xl">Article not found.</h1>
-      <Link to="/insights" className="focus-gold mt-10 inline-flex items-center gap-3 text-xs uppercase tracking-[.18em] text-[#8e741e]"><ArrowLeft size={15} aria-hidden="true" /> All insights</Link>
+      <Link to="/insights" className="focus-gold mt-10 inline-flex items-center gap-3 text-xs uppercase tracking-[.18em] text-[#876e1d]"><ArrowLeft size={15} aria-hidden="true" /> All insights</Link>
     </div>
   </section>;
 }

@@ -1,5 +1,5 @@
 import { ArrowUpRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { email, offices, phones } from "@/data/contact";
 
 const rule = "border-[#FAF8F2]/[.18]";
@@ -57,7 +57,10 @@ export default function Footer() {
 
         {/* Legal bar (on /contact the Contact section above already ends with a rule) */}
         <div className={`grid gap-y-5 ${showDirectory ? `border-t ${rule}` : ""} py-7 text-[11px] leading-[1.7] text-[#FAF8F2]/60 lg:grid-cols-12 lg:gap-x-10 lg:py-8`}>
-          <p className="lg:col-span-4">© {new Date().getFullYear()} Rogad Chambers. All rights reserved.</p>
+          <p className="lg:col-span-4">
+            © {new Date().getFullYear()} Rogad Chambers. All rights reserved.
+            <Link to="/privacy" className="focus-gold ml-4 inline-block py-1 text-[#FAF8F2]/85 underline underline-offset-4 hover:text-[#D4AF37]">Privacy Notice</Link>
+          </p>
           <p id="accessibility" className="lg:col-span-3 lg:col-start-7"><span className="text-[#FAF8F2]/85">Accessibility Statement.</span> We are committed to an accessible digital experience and welcome requests for reasonable assistance.</p>
           <p id="conflicts" className="lg:col-span-3 lg:col-start-10"><span className="text-[#FAF8F2]/85">Conflict of Interest Disclaimer.</span> Contacting the firm does not create a lawyer-client relationship until formal engagement and conflict clearance.</p>
         </div>

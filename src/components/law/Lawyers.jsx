@@ -17,14 +17,17 @@ export default function Lawyers() {
         items={partners}
         offset={0}
       />
-      <div aria-hidden="true" className="my-20 h-px bg-[#D4AF37]/40 lg:my-28" />
-      <Group
-        eyebrow="Associates · 02"
-        title="Associates."
-        intro="Our associates support the firm's work through research, diligence and practical legal support across our practice areas."
-        items={associates}
-        offset={partners.length}
-      />
+      {/* Shown once real associates are in src/data/lawyers.js */}
+      {associates.length > 0 && <>
+        <div aria-hidden="true" className="my-20 h-px bg-[#D4AF37]/40 lg:my-28" />
+        <Group
+          eyebrow="Associates · 02"
+          title="Associates."
+          intro="Our associates support the firm's work through research, diligence and practical legal support across our practice areas."
+          items={associates}
+          offset={partners.length}
+        />
+      </>}
     </div>
   </section>;
 }

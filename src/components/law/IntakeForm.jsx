@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Check, Lock, Send } from "lucide-react";
 
 // WhatsApp number that receives intake requests (international format, digits only).
@@ -67,10 +68,10 @@ export default function IntakeForm() {
         return (
           <li key={s.label} aria-current={current ? "step" : undefined} className="relative flex flex-col items-center text-center">
             {n > 0 && <span aria-hidden="true" className={`absolute right-1/2 top-4 h-px w-full -translate-x-4 ${n <= step ? "bg-[#D4AF37]" : "bg-[#1A2436]/15"}`} />}
-            <span className={`relative z-10 flex h-8 w-8 items-center justify-center rounded-full border text-xs ${current ? "border-[#D4AF37] bg-[#D4AF37] text-[#1A2436]" : done ? "border-[#D4AF37] bg-[#FCFBF7] text-[#8e741e]" : "border-[#1A2436]/25 bg-[#FCFBF7] text-[#1A2436]/50"}`}>
+            <span className={`relative z-10 flex h-8 w-8 items-center justify-center rounded-full border text-xs ${current ? "border-[#D4AF37] bg-[#D4AF37] text-[#1A2436]" : done ? "border-[#D4AF37] bg-[#FCFBF7] text-[#876e1d]" : "border-[#1A2436]/25 bg-[#FCFBF7] text-[#1A2436]/70"}`}>
               {done ? <Check size={14} aria-hidden="true" /> : n + 1}
             </span>
-            <span className={`mt-3 max-w-[9rem] text-[10px] uppercase leading-snug tracking-[.14em] sm:text-[11px] ${current || done ? "text-[#8e741e]" : "text-[#1A2436]/50"}`}>
+            <span className={`mt-3 max-w-[9rem] text-[10px] uppercase leading-snug tracking-[.14em] sm:text-[11px] ${current || done ? "text-[#876e1d]" : "text-[#1A2436]/70"}`}>
               {s.label}<span className="sr-only">{done ? " (completed)" : current ? " (current step)" : ""}</span>
             </span>
           </li>
@@ -117,7 +118,8 @@ export default function IntakeForm() {
     </div>
 
     <p className="mt-6 flex items-center justify-center gap-2 text-center text-xs leading-5 text-[#6b7280]">
-      <Lock size={13} aria-hidden="true" className="shrink-0 text-[#8e741e]" /> Submitting opens WhatsApp. Your information is treated as confidential.
+      <Lock size={13} aria-hidden="true" className="shrink-0 text-[#876e1d]" />
+      <span>Submitting opens WhatsApp. Your information is treated as confidential. <Link to="/privacy" className="focus-gold text-[#876e1d] underline underline-offset-2">Privacy notice</Link></span>
     </p>
   </form>;
 }
@@ -130,7 +132,7 @@ function Choice({ selected, onClick, children }) {
   return (
     <button type="button" aria-pressed={selected} onClick={onClick} className={`focus-gold flex items-center justify-between gap-3 border px-4 py-3 text-left text-sm transition-colors ${selected ? "border-[#D4AF37] bg-[#D4AF37]/10 text-[#1A2436]" : "border-[#1A2436]/15 bg-white text-[#1A2436]/80 hover:border-[#D4AF37]/60"}`}>
       {children}
-      {selected && <Check size={14} aria-hidden="true" className="shrink-0 text-[#8e741e]" />}
+      {selected && <Check size={14} aria-hidden="true" className="shrink-0 text-[#876e1d]" />}
     </button>
   );
 }
