@@ -14,7 +14,7 @@ export default function AboutPeople() {
       <div className="relative mx-auto max-w-[1500px] px-5 lg:px-10">
         <div className="mb-14 grid gap-y-6 lg:mb-[72px] lg:grid-cols-12 lg:gap-x-10">
           <div className="lg:col-span-5">
-            <p className="eyebrow">Our People · 04</p>
+            <p className="eyebrow">Our People</p>
             <h2 className="mt-6 font-serif text-[clamp(3.25rem,5vw,5.5rem)] leading-[.95] tracking-[-.04em] lg:mt-8">
               <span className="block">People behind</span>
               <span className="block">the counsel.</span>

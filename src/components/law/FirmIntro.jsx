@@ -18,7 +18,7 @@ export default function FirmIntro() {
       <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-0 hidden h-full w-px bg-[#D4AF37]/20 lg:block" />
       <div className="mx-auto grid max-w-[1500px] gap-y-10 px-5 lg:grid-cols-12 lg:gap-x-10 lg:px-10">
         <motion.div {...reveal()} className="lg:col-span-5">
-          <p className="eyebrow">The Firm · 01</p>
+          <p className="eyebrow">The Firm</p>
           <h2 className="mt-6 font-serif text-[clamp(3.25rem,5.5vw,6rem)] leading-[.95] tracking-[-.035em] lg:mt-8">
             <span className="lg:block">Counsel with</span> consequence.
           </h2>

@@ -6,7 +6,7 @@ export default function LearnMore() {
   return (
     <EditorialSection
       id="learn-more"
-      eyebrow="Our Standard · 03"
+      eyebrow="Our Standard"
       lines={["Excellence is", "not an", "aspiration."]}
       lead="It is the standard."
       leadTone="gold"

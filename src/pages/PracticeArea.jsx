@@ -36,7 +36,7 @@ function Practice({ practice }) {
     <>
       <PageHero
         tone="cream"
-        eyebrow={`Practice Areas · ${practice.number}`}
+        eyebrow="Practice Areas"
         title={detail ? <HeroTitle lines={detail.heroTitle ?? [practice.title]} /> : practice.title}
         titleSize={detail?.heroTitle ? "compact" : "default"}
         lead={detail?.heroLead}

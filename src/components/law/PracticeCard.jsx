@@ -11,8 +11,7 @@ export default function PracticeCard({ practice, onOpen }) {
       <div className="absolute inset-0 bg-[#1A2436]/50 transition-opacity duration-700 group-hover:opacity-75 group-focus-within:opacity-75" />
       <div className="absolute inset-0 bg-gradient-to-t from-[#1A2436]/90 via-[#1A2436]/25 via-55% to-transparent" />
 
-      <div className="absolute inset-0 flex flex-col justify-between p-6 lg:p-7">
-        <span className="text-[11px] tracking-[.22em] text-[#D4AF37]">{practice.number}</span>
+      <div className="absolute inset-0 flex flex-col justify-end p-6 lg:p-7">
         <div>
           <div className={lift}>
             <h3 className="max-w-[240px] font-serif text-[1.6rem] leading-[1.05] text-white md:max-w-[200px] md:text-[clamp(1.25rem,1.7vw,1.65rem)]">{practice.title}</h3>

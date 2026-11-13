@@ -4,7 +4,7 @@ import { Image } from "@/components/ui/image";
 import { practices, practicePath } from "@/data/practices";
 
 // The Practice Areas directory: one editorial row per practice, each row a single link to its page.
-// Desktop columns: number (1) · title + description (5) · image (4) · CTA (2). Mobile stacks in that order.
+// Desktop columns: title + description (6) · image (4) · CTA (2). Mobile stacks in that order.
 export default function PracticeDirectory() {
   return (
     <section aria-label="Practice directory" className="bg-white py-10 text-[#1A2436] lg:py-16">
@@ -19,9 +19,7 @@ function PracticeDirectoryItem({ practice: p }) {
   return (
     <li className="border-t border-[#1A2436]/[.12] last:border-b">
       <Link to={practicePath(p)} className="focus-gold group grid gap-y-5 py-10 lg:grid-cols-12 lg:items-center lg:gap-x-10 lg:py-12">
-        <span className="text-[1.35rem] tracking-[.06em] text-[#876e1d] lg:col-span-1">{p.number}</span>
-
-        <div className="border-l border-[#D4AF37]/70 pl-6 lg:col-span-5">
+        <div className="border-l border-[#D4AF37]/70 pl-6 lg:col-span-6">
           <h3 className="font-serif text-[clamp(1.6rem,2.4vw,2.25rem)] leading-[1.1] tracking-[-.01em] transition-colors duration-500 group-hover:text-[#876e1d]">{p.title}</h3>
           <p className="mt-4 max-w-[440px] text-[15px]/[1.7] text-[#1A2436]/70">{p.description}</p>
         </div>

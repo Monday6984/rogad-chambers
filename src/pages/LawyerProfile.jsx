@@ -36,9 +36,7 @@ function Profile({ lawyer }) {
   const body = "text-[15px]/[1.8] text-[#1A2436]/75 lg:text-[17px]/[1.75]";
   const sections = [
     bio.length > 0 && { label: "Profile", content: <div className={`space-y-5 ${body}`}>{bio.map((p, i) => <p key={i}>{p}</p>)}</div> },
-    lawyer.practiceAreas?.length > 0
-      ? { label: "Practice areas", content: <ul className="divide-y divide-[#1A2436]/10 border-y border-[#1A2436]/10 font-serif text-xl leading-snug lg:text-2xl">{lawyer.practiceAreas.map(a => <li key={a} className="py-3">{a}</li>)}</ul> }
-      : lawyer.specialization && { label: "Practice area", content: <p className="font-serif text-2xl leading-tight lg:text-3xl">{lawyer.specialization}</p> },
+    lawyer.practiceAreas?.length > 0 && { label: "Practice areas", content: <ul className="divide-y divide-[#1A2436]/10 border-y border-[#1A2436]/10 font-serif text-xl leading-snug lg:text-2xl">{lawyer.practiceAreas.map(a => <li key={a} className="py-3">{a}</li>)}</ul> },
     // The short focus line only stands in when there is no full biography
     !bio.length && lawyer.focus && { label: "Focus", content: <p className={body}>{lawyer.focus}</p> },
     qualifications.length > 0 && {
@@ -60,7 +58,6 @@ function Profile({ lawyer }) {
             <Link to="/people" className="eyebrow focus-gold inline-flex items-center gap-2"><ArrowLeft size={13} aria-hidden="true" /> Our People</Link>
             <h1 className="mt-8 font-serif text-[clamp(3.5rem,7vw,7rem)] font-bold leading-[.92] tracking-[-.04em]">{lawyer.name}</h1>
             <p className="mt-8 text-lg text-[#1A2436]/75">{lawyer.title}</p>
-            {lawyer.specialization && <p className="mt-3 text-xs uppercase tracking-[.18em] text-[#876e1d]">{lawyer.specialization}</p>}
           </div>
           <div className="lg:col-span-4 lg:col-start-9">
             <LawyerPortrait lawyer={lawyer} loading="eager" className="aspect-[4/5] w-full max-w-[420px] lg:ml-auto" />

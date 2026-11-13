@@ -1,7 +1,7 @@
 import { practices } from "@/data/practices";
 import PracticeCard from "@/components/law/PracticeCard";
 
-export default function Practices({ showHeader = true, eyebrow = "Capabilities · 02", onOpen }) {
+export default function Practices({ showHeader = true, eyebrow = "Capabilities", onOpen }) {
   const open = (p) => onOpen ? onOpen(p) : document.getElementById("practices")?.scrollIntoView({ behavior: "smooth" });
 
   return (

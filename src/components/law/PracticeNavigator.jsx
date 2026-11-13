@@ -14,13 +14,12 @@ export default function PracticeNavigator({ current, label = "Practice areas" })
           const active = p.title === current;
           return (
             <li key={p.number}>
-              <Link to={practicePath(p)} aria-current={active ? "page" : undefined} className="focus-gold group relative flex h-[170px] flex-col justify-between overflow-hidden bg-[#1A2436] p-4 sm:p-5 lg:h-[220px] lg:p-6">
+              <Link to={practicePath(p)} aria-current={active ? "page" : undefined} className="focus-gold group relative flex h-[170px] flex-col justify-end overflow-hidden bg-[#1A2436] p-4 sm:p-5 lg:h-[220px] lg:p-6">
                 <Image src={p.image} alt="" className="absolute inset-0 h-full w-full saturate-[.85] transition-transform duration-700 ease-out group-hover:scale-105 group-focus-visible:scale-105 motion-reduce:transform-none" />
                 <div aria-hidden="true" className={`absolute inset-0 bg-[#1A2436]/55 transition-opacity duration-700 group-hover:opacity-75 ${active ? "opacity-75" : ""}`} />
                 <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#1A2436]/90 via-[#1A2436]/30 to-transparent" />
                 {active && <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[3px] bg-[#D4AF37]" />}
 
-                <span className="relative text-[11px] tracking-[.22em] text-[#D4AF37]">{p.number}</span>
                 <span className="relative">
                   <span className="block font-serif text-[15px] leading-[1.15] text-[#F4F1EA] sm:text-lg lg:text-[1.15rem]">{p.title}</span>
                   <span className="mt-3 flex items-center gap-1.5 text-[10px] uppercase tracking-[.16em] text-[#D4AF37]">

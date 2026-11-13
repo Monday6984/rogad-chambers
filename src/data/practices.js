@@ -9,7 +9,7 @@ export const practices = [
   {
     title: "Corporate Advisory", number: "01", image: assets.practices.corporateAdvisory, tag: "Transactions · Governance · Growth",
     description: "Strategic legal and commercial counsel for businesses, investors and institutions.",
-    // Structured content for the practice's own page (see PracticeArea.jsx). Sections are numbered in order.
+    // Structured content for the practice's own page (see PracticeArea.jsx). `number` is an internal id only; it is not displayed.
     detail: {
       intro: "Strategic legal and commercial counsel for businesses at every stage of growth.",
       seoDescription: "Strategic corporate and commercial legal counsel from Rogad Chambers, advising businesses, investors, institutions and organisations across Nigeria and international markets.",
@@ -146,14 +146,17 @@ At Rogad Chambers, we understand that every business decision carries legal impl
           steps: [
             {
               title: "Assess and advise",
+              icon: "search",
               text: "Provide clear, realistic advice on the strengths, risks and options available."
             },
             {
               title: "Strategise and engage",
+              icon: "compass",
               text: "Develop a tailored strategy and pursue the most effective resolution path."
             },
             {
               title: "Resolve and protect",
+              icon: "shield",
               text: "Work towards favourable outcomes that protect client interests and support long-term commercial objectives."
             }
           ]
@@ -173,7 +176,6 @@ At Rogad Chambers, we understand that every business decision carries legal impl
         },
         {
           type: "statement",
-          unnumbered: true,
           eyebrow: "Our Commitment",
           title: [
             "Protect value.",
@@ -296,7 +298,6 @@ At Rogad Chambers, we view dispute resolution not merely as the management of le
         },
         {
           type: "statement",
-          unnumbered: true,
           eyebrow: "Dispute Resolution",
           title: [
             "When creative matters",
@@ -327,7 +328,6 @@ At Rogad Chambers, we view dispute resolution not merely as the management of le
         },
         {
           type: "statement",
-          unnumbered: true,
           tone: "cream",
           eyebrow: "Our Perspective",
           title: [
@@ -513,7 +513,6 @@ At Rogad Chambers, we recognise that creative assets are valuable commercial ass
         },
         {
           type: "statement",
-          unnumbered: true,
           tone: "cream",
           eyebrow: "Our Perspective",
           title: [
@@ -684,7 +683,6 @@ At Rogad Chambers, we recognise that the aviation and maritime industries operat
         },
         {
           type: "statement",
-          unnumbered: true,
           tone: "cream",
           eyebrow: "Our Perspective",
           title: [
@@ -756,7 +754,6 @@ At Rogad Chambers, we understand that successful projects require more than tech
             "Comprehensive IP and",
             "technology support."
           ],
-          continuous: true,
           groups: [
             {
               title: "Intellectual property",
@@ -872,7 +869,6 @@ At Rogad Chambers, we understand that successful projects require more than tech
         },
         {
           type: "statement",
-          unnumbered: true,
           tone: "cream",
           eyebrow: "Our Perspective",
           title: [

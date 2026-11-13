@@ -40,7 +40,7 @@ The build also pre-renders every public page to static HTML (`scripts/prerender.
 Put the image in `public/images/people/` and set `profile_image` in `src/data/lawyers.js`, e.g. `profile_image: "/images/people/gbenga.jpg"`. Without a photo, the card shows initials.
 
 ### Adding full articles
-Add a `body` field to any item in `src/data/insights.js`. Separate paragraphs with a blank line; start a line with `## ` for a section heading or `### ` for a subheading. Set `featured: true` on one item to feature it at the top of the Insights page.
+Add a `body` field to any item in `src/data/insights.js`. Separate paragraphs with a blank line; start a line with `## ` for a section heading, `### ` for a subheading or `> ` for a highlighted line. Lines starting `- ` form a bullet list, and `**text**` is bold. Set `featured: true` on one item to feature it at the top of the Insights page.
 
 ### Original image files
 High-resolution originals (`.png`) in `public/images/practices/` are excluded from git by `.gitignore`; the site uses the optimised `.webp` copies. Convert any new photo to WebP before adding it.

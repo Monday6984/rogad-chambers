@@ -14,7 +14,7 @@ export default function ContactSection() {
     </div>
 
     <div className="relative mx-auto max-w-[1500px] px-5 lg:px-10">
-      <p className="eyebrow text-[#D4AF37]">Contact &amp; Offices · 01</p>
+      <p className="eyebrow text-[#D4AF37]">Contact &amp; Offices</p>
       <h2 className="mt-6 font-serif text-[clamp(3rem,6vw,5.5rem)] leading-[.98] tracking-[-.03em] lg:mt-8">
         <span className="block">Move forward</span>
         <span className="block">with <span className="text-[#D4AF37]">confidence.</span></span>

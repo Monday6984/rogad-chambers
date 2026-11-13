@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 // Defaults are the "Become Our Client" CTA; pages can pass their own eyebrow, title (node), body and label.
 // `titleSize="medium"` suits longer headlines that would otherwise wrap to three lines.
 export default function CtaBand({
-  number,
-  eyebrow = `Engage the Firm · ${number}`,
+  eyebrow = "Engage the Firm",
   title = <>Become Our<br /><span className="text-[#D4AF37]">Client.</span></>,
   body = "Take the first step today — contact our team to schedule a confidential consultation and discover how we can help you move forward with confidence.",
   label = "Request counsel",

@@ -81,17 +81,25 @@ function Meta({ label, children }) {
   return <div><dt className="text-[#6b7280]">{label}</dt><dd className="mt-1.5 normal-case tracking-normal text-[15px] text-[#1A2436]">{children}</dd></div>;
 }
 
-// Plain-text body: blank lines separate paragraphs; "## " starts a section heading, "### " a subheading.
+// Plain-text body: blank lines separate blocks; "## " starts a section heading, "### " a subheading,
+// "> " a highlighted line; a block of "- " lines is a bullet list; **text** is bold. Rendered as React elements, never raw HTML.
 function Body({ text }) {
   return <div className="mt-10 space-y-6 text-[16px]/[1.85] text-[#1A2436]/80">
     {text.split(/\n\s*\n/).map((block, i) => {
       const b = block.trim();
       if (b.startsWith("### ")) return <h3 key={i} className="pt-2 font-serif text-[1.4rem] leading-snug text-[#1A2436]">{b.slice(4)}</h3>;
       if (b.startsWith("## ")) return <h2 key={i} className="pt-4 font-serif text-[1.8rem] leading-tight text-[#1A2436]">{b.slice(3)}</h2>;
-      return <p key={i}>{b}</p>;
+      if (b.startsWith("> ")) return <p key={i} className="border-l border-[#D4AF37] pl-6 font-serif text-[1.2rem] leading-[1.55] text-[#1A2436]">{inline(b.slice(2))}</p>;
+      if (b.startsWith("- ")) return <ul key={i} className="space-y-2.5">
+        {b.split("\n").map((line, j) => <li key={j} className="relative pl-6 before:absolute before:left-0 before:top-[.8em] before:h-px before:w-3 before:bg-[#D4AF37]">{inline(line.replace(/^-\s+/, ""))}</li>)}
+      </ul>;
+      return <p key={i}>{inline(b)}</p>;
     })}
   </div>;
 }
+
+// **bold** spans inside a line
+const inline = (s) => s.split(/\*\*(.+?)\*\*/).map((part, i) => (i % 2 ? <strong key={i} className="font-medium text-[#1A2436]">{part}</strong> : part));
 
 function NotFound() {
   return <section className="bg-white pb-32 pt-44">

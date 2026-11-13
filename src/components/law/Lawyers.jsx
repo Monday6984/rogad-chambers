@@ -11,28 +11,26 @@ export default function Lawyers() {
   return <section className="bg-white pb-24 pt-20 text-[#1A2436] lg:pb-32 lg:pt-28">
     <div className="mx-auto max-w-[1500px] px-5 lg:px-10">
       <Group
-        eyebrow="Partners · 01"
+        eyebrow="Partners"
         title="Partners."
         intro="Our partners bring experience and sector knowledge to complex legal and commercial matters across a range of industries."
         items={partners}
-        offset={0}
       />
       {/* Shown once real associates are in src/data/lawyers.js */}
       {associates.length > 0 && <>
         <div aria-hidden="true" className="my-20 h-px bg-[#D4AF37]/40 lg:my-28" />
         <Group
-          eyebrow="Associates · 02"
+          eyebrow="Associates"
           title="Associates."
           intro="Our associates support the firm's work through research, diligence and practical legal support across our practice areas."
           items={associates}
-          offset={partners.length}
         />
       </>}
     </div>
   </section>;
 }
 
-function Group({ eyebrow, title, intro, items, offset }) {
+function Group({ eyebrow, title, intro, items }) {
   return <div>
     <div className="grid gap-y-6 lg:grid-cols-12 lg:gap-x-10">
       <div className="lg:col-span-5">
@@ -41,6 +39,6 @@ function Group({ eyebrow, title, intro, items, offset }) {
       </div>
       <p className="max-w-[520px] border-l border-[#D4AF37] pl-6 text-[15px]/[1.8] text-[#1A2436]/75 lg:col-span-6 lg:col-start-7 lg:self-end">{intro}</p>
     </div>
-    <div className="mt-14 lg:mt-16"><LawyerGrid items={items} offset={offset} /></div>
+    <div className="mt-14 lg:mt-16"><LawyerGrid items={items} /></div>
   </div>;
 }

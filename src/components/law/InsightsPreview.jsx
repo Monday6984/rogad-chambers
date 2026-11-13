@@ -14,7 +14,7 @@ export default function InsightsPreview() {
       <div className="relative mx-auto max-w-[1500px] px-5 lg:px-10">
         <div className="mb-12 grid gap-y-6 lg:mb-16 lg:grid-cols-12 lg:gap-x-10">
           <div className="lg:col-span-6">
-            <p className="eyebrow">Media &amp; Insights · 04</p>
+            <p className="eyebrow">Media &amp; Insights</p>
             <h2 className="mt-6 font-serif text-[clamp(3rem,13vw,4.5rem)] leading-[.95] tracking-[-.035em] lg:mt-8 lg:text-[clamp(3rem,5.5vw,5.5rem)]">
               Newsletters &amp;<br /><span className="text-[#876e1d]">Blog Posts.</span>
             </h2>
@@ -25,7 +25,7 @@ export default function InsightsPreview() {
         </div>
 
         <div>
-          {items.map((it, i) => <InsightRow key={it.title} item={it} index={i} />)}
+          {items.map((it) => <InsightRow key={it.title} item={it} />)}
         </div>
 
         <div className="mt-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-center">

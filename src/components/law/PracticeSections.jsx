@@ -1,17 +1,14 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, BarChart3, Lightbulb, Plane, ShieldCheck, Ship, Users } from "lucide-react";
+import { ArrowUpRight, BarChart3, Compass, Lightbulb, Plane, Search, ShieldCheck, Ship, Users } from "lucide-react";
 import { Image } from "@/components/ui/image";
 import { practices, practicePath } from "@/data/practices";
 
 // Building blocks for a practice page, driven by `practice.detail.sections` in src/data/practices.js.
-// Each section declares a `type`. Its label is "01 · The Practice" style, numbered in order;
-// sections marked `unnumbered` show the plain eyebrow and don't advance the count.
+// Each section declares a `type`; its eyebrow is shown as the section label.
 export default function PracticeSections({ sections }) {
-  let count = 0;
   return sections.map((section) => {
-    const label = section.unnumbered ? section.eyebrow : `${String(++count).padStart(2, "0")} · ${section.eyebrow}`;
     const Section = types[section.type];
-    return Section ? <Section key={section.eyebrow} {...section} label={label} /> : null;
+    return Section ? <Section key={section.eyebrow} {...section} label={section.eyebrow} /> : null;
   });
 }
 
@@ -48,7 +45,7 @@ function PracticeOverview({ label, title, paragraphs }) {
   );
 }
 
-// Numbered grids read across; `columns` sets the desktop count (3 from lg, or 4 from xl for long lists).
+// Grids read across; `columns` sets the desktop count (3 from lg, or 4 from xl for long lists).
 // Each cell knows its column position per breakpoint, so dividers only appear between columns.
 const grids = {
   3: { cls: "sm:grid-cols-2 lg:grid-cols-3", bp: "lg", n: 3 },
@@ -59,24 +56,23 @@ const dividers = {
   xl: { on: "xl:border-l xl:pl-5", off: "xl:border-l-0 xl:pl-0" }
 };
 
-function NumberedGrid({ items, columns, start = 0 }) {
+function ItemGrid({ items, columns }) {
   const grid = grids[columns];
   return (
-    <ol className={`grid border-t border-[#1A2436]/[.12] ${grid.cls}`}>
+    <ul className={`grid border-t border-[#1A2436]/[.12] ${grid.cls}`}>
       {items.map((item, i) => (
-        <li key={item} className={`flex gap-4 border-b border-[#1A2436]/[.12] py-5 sm:px-5 ${i % 2 ? "sm:border-l" : "sm:border-l-0 sm:pl-0"} ${i % grid.n ? dividers[grid.bp].on : dividers[grid.bp].off}`}>
-          <span className="pt-0.5 text-[11px] tracking-[.18em] text-[#876e1d]">{String(start + i + 1).padStart(2, "0")}</span>
-          <span className="text-[15px] leading-snug">{item}</span>
+        <li key={item} className={`border-b border-[#1A2436]/[.12] py-5 text-[15px] leading-snug sm:px-5 ${i % 2 ? "sm:border-l" : "sm:border-l-0 sm:pl-0"} ${i % grid.n ? dividers[grid.bp].on : dividers[grid.bp].off}`}>
+          {item}
         </li>
       ))}
-    </ol>
+    </ul>
   );
 }
 
-// Heading left; items right. Numbered lists use the grid above; plain lists flow down
+// Heading left; items right. Lists marked `numbered` in the data use the grid above; plain lists flow down
 // newspaper-style columns separated by thin gold rules. `groups` ([{ title, items }]) splits a
-// numbered list under small headings, each numbered from 01 (or running on with `continuous`).
-function PracticeList({ label, title, items, groups, numbered = false, columns = 3, continuous = false }) {
+// grid list under small headings.
+function PracticeList({ label, title, items, groups, numbered = false, columns = 3 }) {
   return (
     <section className="border-t border-[#1A2436]/10 bg-white py-20 text-[#1A2436] lg:py-28">
       <div className="mx-auto grid max-w-[1500px] gap-y-10 px-5 lg:grid-cols-12 lg:gap-x-10 lg:px-10">
@@ -87,15 +83,15 @@ function PracticeList({ label, title, items, groups, numbered = false, columns =
         <div className={columns === 4 ? "lg:col-span-8 lg:col-start-5" : "lg:col-span-8 lg:col-start-5 xl:col-span-7 xl:col-start-6"}>
           {groups ? (
             <div className="space-y-12">
-              {groups.map((g, gi) => (
+              {groups.map((g) => (
                 <div key={g.title}>
                   <h3 className="mb-4 font-serif text-2xl leading-tight">{g.title}</h3>
-                  <NumberedGrid items={g.items} columns={columns} start={continuous ? groups.slice(0, gi).reduce((n, x) => n + x.items.length, 0) : 0} />
+                  <ItemGrid items={g.items} columns={columns} />
                 </div>
               ))}
             </div>
           ) : numbered ? (
-            <NumberedGrid items={items} columns={columns} />
+            <ItemGrid items={items} columns={columns} />
           ) : (
             <ul className="gap-x-10 sm:columns-2 sm:[column-rule:1px_solid_rgba(212,175,55,.45)] lg:columns-3">
               {items.map((item) => (
@@ -168,8 +164,8 @@ function RelatedPractices({ titles }) {
   );
 }
 
-// Line icons a step can name in the data (`icon: "lightbulb"`); steps without one show their number.
-const stepIcons = { lightbulb: Lightbulb, chart: BarChart3, people: Users, plane: Plane, ship: Ship, shield: ShieldCheck };
+// Line icons a step can name in the data (`icon: "lightbulb"`); steps without one show a short gold rule.
+const stepIcons = { lightbulb: Lightbulb, chart: BarChart3, people: Users, plane: Plane, ship: Ship, shield: ShieldCheck, search: Search, compass: Compass };
 
 // Heading left; stages right in columns divided by thin rules (stacked on mobile).
 function PracticeSteps({ label, title, steps }) {
@@ -183,7 +179,7 @@ function PracticeSteps({ label, title, steps }) {
         <ol className="grid gap-y-10 md:grid-cols-3 lg:col-span-8 lg:col-start-5">
           {steps.map((step, i) => (
             <li key={step.title} className={`border-t border-[#1A2436]/[.12] pt-6 md:border-t-0 md:pt-0 ${i ? "md:border-l md:border-[#1A2436]/[.12] md:pl-8" : "md:pr-8"} ${i === 1 ? "md:pr-8" : ""}`}>
-              {stepIcons[step.icon] ? <StepIcon icon={stepIcons[step.icon]} /> : <span className="font-serif text-[2.5rem] leading-none text-[#876e1d]">{String(i + 1).padStart(2, "0")}</span>}
+              {stepIcons[step.icon] ? <StepIcon icon={stepIcons[step.icon]} /> : <span aria-hidden="true" className="block h-px w-12 bg-[#D4AF37]" />}
               <h3 className="mt-6 font-serif text-[1.35rem] leading-tight">{step.title}</h3>
               <p className={`mt-3 ${body}`}>{step.text}</p>
             </li>

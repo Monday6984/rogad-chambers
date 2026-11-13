@@ -30,7 +30,7 @@ export default function About() {
     <Approach />
     <LearnMore />
     <AboutPeople />
-    <CtaBand number="05" />
+    <CtaBand />
     <Footer />
   </main>;
 }

@@ -21,7 +21,7 @@ export default function Home() {
     <Practices onOpen={(p) => navigate(practicePath(p))} />
     <LawyersPreview />
     <InsightsPreview />
-    <CtaBand number="05" />
+    <CtaBand />
     <Footer />
   </main>;
 }

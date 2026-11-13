@@ -9,7 +9,7 @@ export default function About() {
   return (
     <EditorialSection
       id="about"
-      eyebrow="The Firm · 01"
+      eyebrow="The Firm"
       lines={["Counsel", "with", "consequence."]}
       lead="Modern perspective. Enduring principles. Uncompromising standards."
       paragraphs={[whoWeAre, reputation, partnership]}
@@ -22,7 +22,7 @@ export function Approach() {
     <EditorialSection
       id="approach"
       tone="cream"
-      eyebrow="Our Approach · 02"
+      eyebrow="Our Approach"
       lines={["Built around", "the client."]}
       lead="Legal judgment. Commercial perspective. Practical counsel."
       paragraphs={[philosophy, approach]}

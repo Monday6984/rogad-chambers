@@ -47,7 +47,7 @@ export default function Insights() {
 
         <div id="insight-list" role="tabpanel" aria-labelledby={`tab-${active.id}`} className="mt-4">
           {items.length
-            ? items.map((it, i) => <InsightRow key={it.title} item={it} index={i} />)
+            ? items.map((it) => <InsightRow key={it.title} item={it} />)
             : <p className="py-16 text-center text-[15px] text-[#6b7280]">No {active.label.toLowerCase()} published yet.</p>}
         </div>
 
@@ -99,19 +99,15 @@ function FeaturedInsight({ item }) {
 }
 
 // One editorial row per article; the whole row links to /insights/<slug>.
-// Mobile stacks "01 · Date", title, excerpt, read time; from lg the number, date, text and read time become four columns.
+// Mobile stacks date, title, excerpt, read time; from lg the date, text and read time become three columns.
 // The opaque cream background keeps the section's center rule behind the list rather than through article text.
-export function InsightRow({ item, index }) {
+export function InsightRow({ item }) {
   return (
     <Link
       to={insightPath(item)}
-      className="focus-gold group -mx-5 grid gap-y-4 border-t border-[#1A2436]/[.12] bg-[#FAF8F2] px-5 py-8 transition-colors duration-500 last:border-b hover:bg-[#FDFCF8] lg:-mx-6 lg:grid-cols-[minmax(0,.6fr)_minmax(0,1.4fr)_minmax(0,6fr)_minmax(0,2fr)] lg:items-baseline lg:gap-x-8 lg:px-6 lg:py-9"
+      className="focus-gold group -mx-5 grid gap-y-4 border-t border-[#1A2436]/[.12] bg-[#FAF8F2] px-5 py-8 transition-colors duration-500 last:border-b hover:bg-[#FDFCF8] lg:-mx-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,6fr)_minmax(0,2fr)] lg:items-baseline lg:gap-x-8 lg:px-6 lg:py-9"
     >
-      <div className="flex items-center gap-3 text-[11px] lg:contents">
-        <span className="tracking-[.22em] text-[#876e1d]">{String(index + 1).padStart(2, "0")}</span>
-        <span aria-hidden="true" className="text-[#6b7280] lg:hidden">·</span>
-        <span className="uppercase tracking-[.16em] text-[#6b7280] lg:text-[11px]">{item.date}</span>
-      </div>
+      <span className="text-[11px] uppercase tracking-[.16em] text-[#6b7280]">{item.date}</span>
       <div>
         <h3 className="max-w-[640px] font-serif text-[1.3rem] leading-[1.2] transition-colors duration-500 group-hover:text-[#876e1d] lg:text-[1.4rem]">{item.title}</h3>
         {item.excerpt && <p className="mt-3 max-w-[560px] text-[13.5px]/[1.65] text-[#6b7280] lg:text-sm/[1.7]">{item.excerpt}</p>}

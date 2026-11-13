@@ -6,7 +6,6 @@
 // Each lawyer gets a profile page at /our-people/<slug-of-name>.
 //
 // Fields (all optional except name/title/initials; anything missing is simply not shown):
-//   specialization  short practice line on the card and under the name on the profile
 //   focus           one-line summary on the card (and the page's meta description)
 //   practiceAreas   full list for the profile page
 //   qualifications  list for the profile page; older entries use `bar`, a " · "-separated string
@@ -19,7 +18,6 @@ const allLawyers = [
     initials: "GO",
     profile_image: "/images/people/Gbenga Onabanjo Rogad.jpg",
     formerSlugs: ["gbenga-onabanjo-rogad"],
-    specialization: "Corporate & Commercial Law · Property & Real Estate",
     focus: "Lawyer and legal strategist with over a decade of experience in legal practice, advisory and advocacy.",
     practiceAreas: ["Corporate and Commercial Law", "Property and Real Estate Law", "Human Rights", "Contracts and Commercial Transactions", "Employment Law", "Dispute Resolution", "Regulatory Compliance", "Wills and Estate Planning"],
     bio: `Gbenga Joshua Onabanjo (Rogad) is a Nigerian lawyer and legal strategist with over a decade of professional experience in legal practice, advisory and advocacy.
@@ -41,7 +39,6 @@ At Rogad Chambers, he leads with a simple philosophy: good legal advice should n
     title: "Managing Partner",
     initials: "SA",
     profile_image: "/images/people/Stephen Ayokanmi.jpeg",
-    specialization: "Real Estate · Corporate & Commercial Law",
     focus: "Legal advisory and representation for individuals, businesses and organisations across commercial and private legal matters.",
     practiceAreas: ["Real Estate", "Corporate and Commercial Law", "Regulatory Advisory", "Dispute Resolution"],
     bio: `Stephen Ayokanmi Adekanye is a Legal Practitioner providing legal advisory and representation to individuals, businesses and organisations across a range of commercial and private legal matters.
@@ -61,7 +58,6 @@ At Rogad Chambers, he contributes to the firm’s broader commitment to deliveri
     title: "Partner",
     initials: "SA",
     profile_image: "/images/people/Samuel Abu.jpeg",
-    specialization: "Corporate & Commercial Law · Fintech & Technology",
     focus: "Close to a decade advising businesses, organisations and individuals on corporate, commercial, regulatory and dispute-resolution matters.",
     practiceAreas: ["Corporate and Commercial Law", "Regulatory Compliance", "Corporate Transactions", "Fintech and Technology Law", "Commercial Agreements", "Intellectual Property", "Dispute Resolution"],
     bio: `Samuel Abu is a Nigerian legal practitioner with close to a decade of experience advising businesses, organisations and individuals across a broad range of corporate, commercial, regulatory and dispute-resolution matters.
@@ -113,7 +109,6 @@ At Rogad Chambers, he contributes to the firm’s commitment to delivering acces
     title: "Partner",
     initials: "BA",
     profile_image: "/images/people/Babafemi Eniola Awe.jpeg",
-    specialization: "Corporate Governance · Regulatory Compliance",
     focus: "Over a decade across company secretarial practice, corporate governance, regulatory compliance and legal advisory services.",
     practiceAreas: ["Company Secretarial Practice", "Corporate Governance", "Regulatory Compliance", "Commercial Law", "Property Transactions", "Risk Management", "Legal Advisory Services"],
     qualifications: ["Certified Data Protection Officer", "Specialised studies in Artificial Intelligence and Law, Lund University, Sweden"],
@@ -129,12 +124,12 @@ Known for his analytical approach, professionalism and commitment to ethical bus
 
 At Rogad Chambers, he brings this multidisciplinary perspective to the firm’s advisory practice, contributing to the delivery of practical, commercially informed and risk-conscious legal solutions for businesses and organisations.`
   },
-  { placeholder: true, name: "Chidi Okafor", title: "Senior Associate", initials: "CO", specialization: "Media & Entertainment", focus: "Talent agreements, film financing, and brand protection.", bar: "Nigerian Bar Association" },
-  { placeholder: true, name: "Ngozi Eze", title: "Senior Associate", initials: "NE", specialization: "Real Estate & Conveyancing", focus: "Title perfection, commercial leasing, and development finance.", bar: "Nigerian Bar Association" },
-  { placeholder: true, name: "Ibrahim Suleiman", title: "Senior Associate", initials: "IS", specialization: "Aviation & Maritime", focus: "Aircraft leasing, shipping disputes, and cabotage compliance.", bar: "Nigerian Bar Association" },
-  { placeholder: true, name: "Tola Adebayo", title: "Associate", initials: "TA", specialization: "Corporate Advisory", focus: "Start-up formation, commercial contracts, and regulatory compliance.", bar: "Nigerian Bar Association" },
-  { placeholder: true, name: "Emeka Obi", title: "Associate", initials: "EO", specialization: "Litigation & Dispute Resolution", focus: "Debt recovery, employment disputes, and civil claims.", bar: "Nigerian Bar Association" },
-  { placeholder: true, name: "Halima Bello", title: "Associate", initials: "HB", specialization: "Technology & Data Privacy", focus: "Fintech regulation, cybersecurity, and digital commerce.", bar: "Nigerian Bar Association" }
+  { placeholder: true, name: "Chidi Okafor", title: "Senior Associate", initials: "CO", focus: "Talent agreements, film financing, and brand protection.", bar: "Nigerian Bar Association" },
+  { placeholder: true, name: "Ngozi Eze", title: "Senior Associate", initials: "NE", focus: "Title perfection, commercial leasing, and development finance.", bar: "Nigerian Bar Association" },
+  { placeholder: true, name: "Ibrahim Suleiman", title: "Senior Associate", initials: "IS", focus: "Aircraft leasing, shipping disputes, and cabotage compliance.", bar: "Nigerian Bar Association" },
+  { placeholder: true, name: "Tola Adebayo", title: "Associate", initials: "TA", focus: "Start-up formation, commercial contracts, and regulatory compliance.", bar: "Nigerian Bar Association" },
+  { placeholder: true, name: "Emeka Obi", title: "Associate", initials: "EO", focus: "Debt recovery, employment disputes, and civil claims.", bar: "Nigerian Bar Association" },
+  { placeholder: true, name: "Halima Bello", title: "Associate", initials: "HB", focus: "Fintech regulation, cybersecurity, and digital commerce.", bar: "Nigerian Bar Association" }
 ];
 
 // Entries marked `placeholder: true` are template data awaiting the firm's real associates. They are left out
